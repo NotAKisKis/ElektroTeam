@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}Admin | ELEKTROTeam{% endblock %}
+
+{% block content %}
+  <section class="section section-first">
+    <div class="page-head">
+      <div>
+        <h1>Manage products</h1>
+        <p class="lead">Add, edit and remove products shown in the shop.</p>
+      </div>
+      <button id="add-btn" class="btn btn-primary" type="button">Add product</button>
+    </div>
+
+    <p id="status" class="status" role="status" hidden></p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>ID</th><th>Name</th><th>Category</th><th>Price</th><th>Stock</th><th><span class="sr-only">Actions</span></th></tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <dialog id="product-dialog">
+    <h2 id="dialog-title">Add product</h2>
+    <form id="product-form" novalidate>
+      <label class="field"><span>Name</span><input name="name" required></label>
+      <label class="field"><span>Category</span><select name="category_id"></select></label>
+      <label class="field"><span>Price (PLN)</span><input name="price" type="number" step="0.01" min="0"></label>
+      <label class="field"><span>Image URL</span><input name="image_url" placeholder="/static/img/tv.jpg (empty = no image)"></label>
+      <label class="field"><span>Description</span><textarea name="description" rows="3"></textarea></label>
+      <label class="field"><span>Stock (pieces)</span><input name="stock" type="number" min="0" step="1" value="0"></label>
+      <p id="form-error" class="form-error" role="alert"></p>
+      <div class="dialog-actions">
+        <button type="button" id="cancel-btn" class="btn btn-ghost">Cancel</button>
+        <button type="submit" id="save-btn" class="btn btn-primary">Save product</button>
+      </div>
+    </form>
+  </dialog>
+{% endblock %}
+
+{% block scripts %}
+  <script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+{% endblock %}

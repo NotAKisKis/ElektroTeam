@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Shop | ELEKTROTeam{% endblock %}
+
+{% block content %}
+  <section class="hero">
+    <h1>Choose<br>your<br><span class="accent">product</span></h1>
+    <p class="lead">Electronics for home and on the go.</p>
+  </section>
+
+  <section class="section">
+    <label class="field search-field" for="search">
+      <span>Search</span>
+      <input id="search" type="search" placeholder="Name or description">
+    </label>
+
+    <div id="chips" class="chips" role="group" aria-label="Categories"></div>
+
+    <p id="status" class="status" role="status" hidden></p>
+    <ul id="grid" class="grid"></ul>
+  </section>
+{% endblock %}
+
+{% block scripts %}
+  <script src="{{ url_for('static', filename='js/catalog.js') }}"></script>
+{% endblock %}

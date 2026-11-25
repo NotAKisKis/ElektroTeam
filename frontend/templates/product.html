@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Product | ELEKTROTeam{% endblock %}
+
+{% block content %}
+  <section class="section section-first">
+    <p class="back"><a href="{{ url_for('catalog') }}">Back to shop</a></p>
+    <p id="status" class="status" role="status" hidden></p>
+    <article id="product" class="product" data-id="{{ product_id }}" hidden>
+      <div class="product-media" id="product-media"></div>
+      <div class="product-info">
+        <p class="card-meta" id="product-category"></p>
+        <h1 id="product-name"></h1>
+        <p class="product-price" id="product-price"></p>
+        <p><span class="badge" id="product-stock"></span></p>
+        <p id="product-description"></p>
+      </div>
+    </article>
+  </section>
+{% endblock %}
+
+{% block scripts %}
+  <script src="{{ url_for('static', filename='js/product.js') }}"></script>
+{% endblock %}

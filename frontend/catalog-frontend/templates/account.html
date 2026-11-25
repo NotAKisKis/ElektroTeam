@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Account | ELEKTROTeam{% endblock %}
+
+{% block content %}
+  <section class="section section-first">
+    <h1>My account</h1>
+    <p class="lead">Sample data. It will show real data once login is added.</p>
+
+    <div class="account">
+      <div class="panel">
+        <div class="avatar" aria-hidden="true">{{ user.initials }}</div>
+        <h2>{{ user.name }}</h2>
+        <dl class="info">
+          <dt>Email</dt><dd>{{ user.email }}</dd>
+          <dt>Phone</dt><dd>{{ user.phone }}</dd>
+          <dt>City</dt><dd>{{ user.city }}</dd>
+          <dt>Member since</dt><dd>{{ user.since }}</dd>
+        </dl>
+      </div>
+
+      <div>
+        <h2>Recent orders</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Order</th><th>Date</th><th>Items</th><th>Total</th><th>Status</th></tr></thead>
+            <tbody>
+              {% for o in orders %}
+              <tr>
+                <td>{{ o.number }}</td><td>{{ o.date }}</td><td>{{ o["items"] }}</td>
+                <td>{{ "%.2f"|format(o.total) }} PLN</td><td>{{ o.status }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

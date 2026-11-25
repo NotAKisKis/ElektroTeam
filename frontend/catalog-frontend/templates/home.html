@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}ELEKTROTeam{% endblock %}
+
+{% block content %}
+  <section class="hero hero-home">
+    <div class="hero-text">
+      <h1>CHOOSE<br>your<br><span class="accent">PRODUCT</span></h1>
+      <a class="btn btn-primary btn-lg" href="{{ url_for('catalog') }}">Explore More</a>
+    </div>
+    <img class="hero-img" src="{{ url_for('static', filename='img/hero.png') }}" alt="" onerror="this.remove()">
+  </section>
+
+  <section class="features" aria-label="Why us">
+    <div class="feature">
+      <svg viewBox="0 0 24 24" width="44" height="44" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12l4 6-10 12L2 9z"/><path d="M2 9h20M9 3l3 6 3-6M12 9v12"/></svg>
+      <div><h3>Quality Guarantee</h3><p>We guarantee 100 % quality of our products.</p></div>
+    </div>
+    <div class="feature">
+      <svg viewBox="0 0 24 24" width="44" height="44" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M4 15v-3a8 8 0 0116 0v3"/><rect x="3" y="14" width="4" height="6" rx="1"/><rect x="17" y="14" width="4" height="6" rx="1"/></svg>
+      <div><h3>24/7 Support</h3><p>Our support is always ready to help you.</p></div>
+    </div>
+    <div class="feature">
+      <svg viewBox="0 0 24 24" width="44" height="44" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="5" rx="1"/><path d="M5 9h14v11H5zM10 13h4"/></svg>
+      <div><h3>Wide Selection</h3><p>We offer a wide selection of various electronic devices.</p></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <ul class="grid tiles" aria-label="Categories">
+      {% for name, file in [('TV', 'tv.png'), ('Phones', 'phones.png'), ('Drones', 'drones.png'), ('Headphones', 'headphones.png')] %}
+      <li>
+        <a class="card" href="{{ url_for('catalog', category=name) }}">
+          <div class="card-media"><img src="{{ url_for('static', filename='img/' ~ file) }}" alt="" onerror="this.remove()"></div>
+          <span class="tile-label">{{ name }}</span>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+{% endblock %}
