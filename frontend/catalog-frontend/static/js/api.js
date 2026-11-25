@@ -4,7 +4,7 @@
 // Этап 2: USE_MOCK = false (запросы к FastAPI)
 // ============================================================
 const CONFIG = {
-  USE_MOCK: true,
+  USE_MOCK: false,
   API_BASE: "http://127.0.0.1:8000",
   CURRENCY: "PLN",
   LOCALE: "pl-PL",
